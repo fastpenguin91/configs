@@ -56,11 +56,11 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(rjsx-mode )
+   dotspacemacs-additional-packages '(rjsx-mode electric-pair-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(smartparens-global-mode)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -326,9 +326,6 @@ you should place your code here."
   (setq-default js2-basic-offset 2) ;; recommended by spacemacs docs to get indentation at 2
   (setq-default js-indent-level 2)  ;; goes with above line
 ;;  (setq-default
-;;    js2-mode              ** Think I can remove this. already set .js to rjsx
-;;    js2-basic-offset 2    ** Remove? already set above.
-;;   js-indent-level 2      ** Remove? already set above
    ;; web-mode              ** Do i need web mode if I have RJSX mode?
 ;;   css-indent-offset 2
 ;;   web-mode-markup-indent-offset 2
@@ -341,15 +338,17 @@ you should place your code here."
 ;;    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
 ;;    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
 
-;; Didn't work for fixing html in js indentation
-;;  (add-to-list 'auto-mode-alist '("\\.js\\'" . react-mode))
   (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
   ;; Manually setting non-strict mode of smartparens-mode globally. Strict causes problems with arrow function => because strict mode doesn't allow any brackets without matches.
-  ;; Not sure if this is the proper method of setting it globally.
-  (define-globalized-minor-mode my-global-smartparens-mode smartparens-global-mode
-    (lambda () (smartparens-global-mode 1)))
 
-  (my-global-smartparens-mode 1)
+
+(electric-pair-mode 1)
+
+  ;; Not sure if this is the proper method of setting it globally.
+;;  (define-globalized-minor-mode my-global-smartparens-mode smartparens-global-mode
+;;    (lambda () (smartparens-global-mode 1)))
+
+;;  (my-global-smartparens-mode 1)
 
   )
 
