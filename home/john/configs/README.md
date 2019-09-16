@@ -4,6 +4,7 @@ Instead these are just for reference to remember what kind of setup was done on 
 
 TODOS/NOTES/Challenges:
 
+- Possible Solution to below: Use separate branches for each system
 - Figure out how to make this work for multiple systems with different files.
     If I setup a new system with different configs then we'd have out-of-sync repos, unnecessary files in systems, etc..
 
